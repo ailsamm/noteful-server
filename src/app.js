@@ -5,6 +5,8 @@ const cors = require('cors')
 const helmet = require('helmet')
 const logger = require('./logger')
 const { NODE_ENV } = require('./config')
+const notesRouter = require('./notes/notes-router')
+const foldersRouter = require('./folders/folders-router')
 
 const app = express()
 
@@ -26,6 +28,8 @@ app.use(function errorHandler(error, req, res, next) {
   }
   res.status(500).json(response)
 })
+app.use('/api/notes', notesRouter)
+app.use('/api/folders', foldersRouter)
 
 app.get('/', (req, res) => {
    res.send('Hello, boilerplate!')
