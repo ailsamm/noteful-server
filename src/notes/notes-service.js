@@ -1,4 +1,4 @@
-const NoteService = {
+const NotesService = {
     getAllNotes(knex) {
       return knex.select('*').from('noteful_notes')
     },
